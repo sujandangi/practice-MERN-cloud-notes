@@ -125,7 +125,7 @@ router.post("/login", [
 //using a middleware 'fetchuser' that extracts the User id from jwt token
 //middleware then modify the 'req' object and insert into it the user like so: 'req.user = decoded.user' | '{user: {id: "id"}}'
 
-router.get("/getuser", fetchuser, async (req, res) => {
+router.post("/getuser", fetchuser, async (req, res) => {
   try {
     const userId = req.user.id;
     const user = await User.findById(userId).select("-password")
